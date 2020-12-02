@@ -8,8 +8,11 @@ int main(){
     ifstream DayTwoText("Resources/day2.txt");
 
     // Part 1 Code
-    int validCount = 0;
+    int validCountP1 = 0;
+    int validCountP2 = 0;
+    int line = 0;
     while (getline (DayTwoText, fileLine)) {
+        line++;
         char token = ' ';
         string breakUp[3];
         int StringValue = 0;
@@ -40,8 +43,19 @@ int main(){
             }
         }
         if ((matchedCount >= stoi(range[0])) && (matchedCount <= stoi(range[1]))) {
-            validCount++;
+            validCountP1++;
+        }
+        if ((breakUp[2].at(stoi(range[0])-1) == policy.at(0)) && (breakUp[2].at(stoi(range[1])-1) != policy.at(0))) {
+            validCountP2++;
+        }
+        if ((breakUp[2].at(stoi(range[1])-1) == policy.at(0)) && (breakUp[2].at(stoi(range[0])-1) != policy.at(0))) {
+            validCountP2++;
         }
     }
-    cout << validCount;
+    cout << "Part 1: \n";
+    cout << validCountP1;
+    cout << "\n";
+    cout << "Part 2: \n";
+    cout << validCountP2;
+    cout << "\n";
 }
