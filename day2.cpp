@@ -17,8 +17,6 @@ int main(){
         for (int i = 0; i < fileLine.length(); i++) {
             if (fileLine.at(i) == token) {
                 breakUp[StringValue] = fileLine.substr(oldChar, i-oldChar);
-                cout << breakUp[StringValue];
-                cout << "\n";
                 StringValue++;
                 oldChar = i+1;
             }
@@ -27,8 +25,23 @@ int main(){
 
             }
         }
-        cout << breakUp[2];
-        cout << "\n";
-
+        string range[2];
+        for (int i = 0; i < breakUp[0].length(); i++) {
+            if (breakUp[0].at(i) == '-') {
+                range[0] = breakUp[0].substr(0, i);
+                range[1] = breakUp[0].substr(i+1, breakUp[0].length()-i);
+            }
+        }
+        string policy = breakUp[1].substr(0, 1);
+        int matchedCount = 0;
+        for (int i = 0; i < breakUp[2].length(); i++) {
+            if (breakUp[2].at(i) == policy.at(0)) {
+                matchedCount++;
+            }
+        }
+        if ((matchedCount >= stoi(range[0])) && (matchedCount <= stoi(range[1]))) {
+            validCount++;
+        }
     }
+    cout << validCount;
 }
