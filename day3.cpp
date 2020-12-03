@@ -23,7 +23,6 @@ int main() {
     int slope4 = 0;
     int slope5 = 0;
     while (getline (DayThreeText, fileLine)) {
-        currentLine++;
         if (slope1 > (fileLine.length() - 1)) {
             slope1 = slope1 - (fileLine.length());
         }
@@ -76,15 +75,14 @@ int main() {
         slope2 = slope2 + 3;
         slope3 = slope3 + 5;
         slope4 = slope4 + 7;
+        currentLine++;
     }
-    cout << Slope1Xs;
+    cout << "Part One:";
     cout << "\n";
     cout << Slope2Xs;
     cout << "\n";
-    cout << Slope3Xs;
+    cout << "Part Two:";
     cout << "\n";
-    cout << Slope4Xs;
-    cout << "\n";
-    cout << Slope5Xs;
+    cout << Slope1Xs * Slope2Xs * Slope3Xs * Slope4Xs * Slope5Xs;
     cout << "\n";
 }
